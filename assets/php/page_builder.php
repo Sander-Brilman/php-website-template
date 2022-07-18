@@ -44,6 +44,7 @@ function get_page_info(array $url_array = [])
 	switch ($url_array[0]) {
 		case '':
 			$php[] = 'home';
+			$meta_tags = generate_meta_tags();
 			break;
 
 		default:
@@ -78,7 +79,8 @@ function get_page_info(array $url_array = [])
 
 function generate_meta_tags(string $title = '', string $description = '', string $image_path = '', string $image_alt = '') {
 	/**
-	 * Generate the html meta tags with the given values
+	 * Generate the html meta tags with the given values.
+     * Meta tags will fill with default values if left empty. 
 	 * 
 	 * @param string Title tag
 	 * @param string The description
