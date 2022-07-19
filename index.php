@@ -10,7 +10,7 @@ include("assets/php/process_post.php");
 
 // create url array
 $url_array 	= $_SERVER['REQUEST_URI'];
-if ($_SERVER['HTTP_HOST'] == 'www.localhost') $url_array = str_replace('/bedandbreakfasttwente/', '', $url_array);
+if ($_SERVER['HTTP_HOST'] == 'www.localhost') $url_array = str_replace('', '', $url_array);
 
 $url_array 	= explode('/', $url_array);
 foreach ($url_array as &$value) {
