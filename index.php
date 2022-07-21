@@ -5,8 +5,6 @@ require_once('config.php');
 include_once('assets/php/page_builder.php');
 include_once('assets/php/debug_functions.php');
 
-include("assets/php/process_form.php");
-
 
 // create url array
 $url_array 	= $_SERVER['REQUEST_URI'];
@@ -16,6 +14,9 @@ $url_array 	= explode('/', $url_array);
 foreach ($url_array as &$value) {
 	$value = explode('?', $value)[0];
 }
+
+include("assets/php/process_form.php");
+include("assets/php/redirects.php");
 
 
 $page_info = get_page_info($url_array);

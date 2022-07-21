@@ -10,7 +10,7 @@ $debug_ips = [
 $ssl                    = true;
 
 $display_name           = '';
-$site_domain            = ''; // dont forget to add extension like .com
+$site_domain            = ''; // dont forget to add extension like .com, www. is automatically added
 
 $site_url = ($ssl ? 'https://' : 'http://') . 'www.' . $site_domain . '/';
 
