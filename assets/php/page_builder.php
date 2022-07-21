@@ -12,8 +12,9 @@ function get_page_info(array $url_array = [])
 	 *
 	 * To add files you add the filename to the right array.
 	 * Files will automatically get a file extension.
-     * 
+	 * 
 	 * To add set the metatags overwrite the meta_tags variable.
+	 * To disable indexing set $no_index to true.
 	 *
 	 * =============== File path info ===============
 	 *
@@ -32,6 +33,7 @@ function get_page_info(array $url_array = [])
 	$css        = [];
 	$js			= [];
 	$meta_tags  = '';
+	$no_index	= false;
 	$page_info  = [
 		'files' => [
 			'php' => &$php,
@@ -41,7 +43,7 @@ function get_page_info(array $url_array = [])
 		'metatags' => &$meta_tags,
 	];
 
-    // insert your pages here.
+	// insert your pages here.
 	switch ($url_array[0]) {
 		case '':
 			$php[] = 'home';
@@ -54,7 +56,7 @@ function get_page_info(array $url_array = [])
 			break;
 	}
 
-    // add the path and file extension
+	// add the path and file extension
 	foreach ($page_info['files'] as $file_extension => &$names) {
 
 		foreach ($names as &$name) {
@@ -76,13 +78,17 @@ function get_page_info(array $url_array = [])
 		}
 	}
 
+	if ($no_index) {
+        $meta_tags = '<meta name="robots" content="noindex"/>';
+    }
+
 	return $page_info;
 }
 
 function generate_meta_tags(string $title = '', string $description = '', string $image_path = '', string $image_alt = '') {
 	/**
 	 * Generate the html meta tags with the given values.
-     * Meta tags will fill with default values if left empty. 
+	 * Meta tags will fill with default values if left empty. 
 	 * 
 	 * @param string Title tag
 	 * @param string The description
