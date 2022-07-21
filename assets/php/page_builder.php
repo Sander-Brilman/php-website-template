@@ -2,7 +2,7 @@
 function get_page_info(array $url_array = [])
 {
 	/**
-	 * Returns a data array with info for the page. Including what files to load and the meta tags.
+	 * Returns a array with info for the page. Including what files to load and the SEO meta tags.
 	 * Used to define scripts, files and meta tags that will be loaded for a page.
 	 * 
 	 * Files are stored as relative paths from the root, the types of files are:
@@ -10,10 +10,10 @@ function get_page_info(array $url_array = [])
 	 * - js (javascript)
 	 * - php
 	 *
-	 * To add files you add the filename to the right variable.
+	 * To add files you add the filename to the right array.
+	 * Files will automatically get a file extension.
+     * 
 	 * To add set the metatags overwrite the meta_tags variable.
-	 *
-	 * Files will automatically get a file extensions at the end of the function.
 	 *
 	 * =============== File path info ===============
 	 *
@@ -32,7 +32,7 @@ function get_page_info(array $url_array = [])
 	$css        = [];
 	$js			= [];
 	$meta_tags  = '';
-	$page_info = [
+	$page_info  = [
 		'files' => [
 			'php' => &$php,
 			'css' => &$css,
@@ -41,6 +41,7 @@ function get_page_info(array $url_array = [])
 		'metatags' => &$meta_tags,
 	];
 
+    // insert your pages here.
 	switch ($url_array[0]) {
 		case '':
 			$php[] = 'home';
@@ -49,10 +50,11 @@ function get_page_info(array $url_array = [])
 
 		default:
 			$php[] = '404';
-			$meta_tags = generate_meta_tags('Requested page not found', 'The page you requested is currently not available...');
+			$meta_tags = generate_meta_tags('Requested page not found', 'The page you requested is currently not available..');
 			break;
 	}
 
+    // add the path and file extension
 	foreach ($page_info['files'] as $file_extension => &$names) {
 
 		foreach ($names as &$name) {

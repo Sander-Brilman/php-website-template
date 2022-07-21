@@ -13,7 +13,7 @@ function start_timer()
 function end_timer(int $timer_start, string $feedback)
 {
     /**
-     * Echo the result of the timer
+     * Echo the result of the timer with a feedback
      * 
      * @param int the value received from start_timer
      * 
@@ -27,7 +27,8 @@ function end_timer(int $timer_start, string $feedback)
 function check_debug_ip()
 {
     /**
-     * Check if the current IP adress is as a debug ip
+     * Check if the current IP adress is listed as a debug ip
+     * (defined in the config file)
      * 
      * @return bool
      */
@@ -39,7 +40,7 @@ function dump($data, bool $ip_check = true)
 {
     /**
      * Dumps value in a readable pop-up.
-     * Prints additional caller info aswell.
+     * Prints additional info about where it was called aswell.
      * 
      * @param mixed the value to be dumped
      * 

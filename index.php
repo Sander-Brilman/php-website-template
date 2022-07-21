@@ -5,7 +5,7 @@ require_once('config.php');
 include_once('assets/php/page_builder.php');
 include_once('assets/php/debug_functions.php');
 
-include("assets/php/process_post.php");
+include("assets/php/process_form.php");
 
 
 // create url array

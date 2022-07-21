@@ -1,0 +1,5 @@
+<?php
+/**
+ * Conditions for redirecting.
+ */
+?>
