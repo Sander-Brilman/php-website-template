@@ -52,7 +52,7 @@ function get_page_info(array $url_array = [])
 
 		default:
 			$php[] = '404';
-			$meta_tags = generate_meta_tags('Requested page not found', 'The page you requested is currently not available..');
+			$no_index = true;
 			break;
 	}
 
@@ -79,24 +79,26 @@ function get_page_info(array $url_array = [])
 	}
 
 	if ($no_index) {
-        $meta_tags = '<meta name="robots" content="noindex"/>';
-    }
+		$meta_tags = '<meta name="robots" content="noindex"/>';
+	}
 
 	return $page_info;
 }
 
-function generate_meta_tags(string $title = '', string $description = '', string $image_path = '', string $image_alt = '') {
+function generate_meta_tags(string $page_titel = '', string $search_title = '', string $description = '', string $image_path = '', string $image_alt = '') {
 	/**
 	 * Generate the html meta tags with the given values.
 	 * Meta tags will fill with default values if left empty. 
 	 * 
-	 * @param string Title tag
+	 * @param string Title for the page
+	 * @param string Title search results
 	 * @param string The description
 	 * @param string The image path. If left empty it will pick the favicon.
 	 * @param string The description for the image, 
 	 * 
 	 * @return string The html meta tags. 
 	 */
+	global $url_array;
 	global $display_name;
 	global $site_url;
 	global $site_domain;
@@ -104,7 +106,8 @@ function generate_meta_tags(string $title = '', string $description = '', string
 	global $default_website_title;
 	global $default_website_description;
 
-	$title 			= $title 		== '' ? "$default_website_title | $display_name" : $title;
+	$page_titel     = $page_titel 	== '' ? $url_array[0] . ' | ' . $display_name : $page_titel;
+	$search_title 	= $search_title == '' ? $default_website_title . ' | ' . $display_name : $search_title;
 	$description 	= $description 	== '' ? $default_website_description : $description;
 
 	if ($image_path == '') {
@@ -112,30 +115,27 @@ function generate_meta_tags(string $title = '', string $description = '', string
 		$image_alt  = $display_name.' Logo';
 	}
 
+	// title
+	$meta_tags 	=  '<title>'.$page_titel.'</title>
+					<meta property="og:title" 	content="'.$search_title.'" />
+					<meta name="twitter:title" 	content="'.$search_title.'" />';
 
-	// title & description
-	$meta_tags 	=  '<title>'.$title.'</title>
-					<meta property="og:title" 	content="'.$title.'" />
-					<meta name="twitter:title" 	content="'.$title.'" />';
-
+	// description
 	$meta_tags 	.= '<meta property="og:description"  content="'.$description.'" />
 					<meta name="twitter:description" content="'.$description.'" />';
-
 
 	// image & alt text.
 	$meta_tags 	.= '<meta property="og:image"  		content="'.$image_path.'" />
 					<meta name="twitter:image" 		content="'.$image_path.'" />
 					<meta property="og:image:alt" 	content="'.$image_alt.'"  />';
 
+	// site name
+	$meta_tags 	.= '<meta property="og:site_name" content="'.$site_domain.'" />';
 
 	// Other
 	$meta_tags 	.= '<meta property="og:locale" content="nl_NL" />
 					<meta property="og:type"   content="website" />';
 
-	$meta_tags 	.= '<meta property="og:site_name" content="'.$site_domain.'" />';
-
 	return $meta_tags;
 }
-
 ?>
-

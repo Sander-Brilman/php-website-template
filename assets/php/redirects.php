@@ -1,6 +1,6 @@
 <?php
 /**
- * Conditions for redirecting.
+ * A collection of all redirects on the site.
  */
 function redirect(string $url)
 {
