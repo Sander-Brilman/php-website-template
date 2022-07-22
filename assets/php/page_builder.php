@@ -29,10 +29,13 @@ function get_page_info(array $url_array = [])
 	 *
 	 * @return array Returns a associative with a array of file paths and the metatags.
 	*/
+    global $display_name;
+
 	$php        = [];
 	$css        = [];
 	$js			= [];
 	$meta_tags  = '';
+    $title      = '';
 	$no_index	= false;
 	$page_info  = [
 		'files' => [
@@ -41,6 +44,7 @@ function get_page_info(array $url_array = [])
 			'js'  => &$js,
 		],
 		'metatags' => &$meta_tags,
+        'page_title' => &$title,
 	];
 
 	// insert your pages here.
@@ -48,11 +52,13 @@ function get_page_info(array $url_array = [])
 		case '':
 			$php[] = 'home';
 			$meta_tags = generate_meta_tags();
+            $title = generate_title($display_name, false);
 			break;
 
 		default:
 			$php[] = '404';
 			$no_index = true;
+            $title = generate_title('Unknown page');
 			break;
 	}
 
@@ -85,7 +91,7 @@ function get_page_info(array $url_array = [])
 	return $page_info;
 }
 
-function generate_meta_tags(string $page_titel = '', string $search_title = '', string $description = '', string $image_path = '', string $image_alt = '') {
+function generate_meta_tags(string $search_title = '', string $description = '', string $image_path = '', string $image_alt = '') {
 	/**
 	 * Generate the html meta tags with the given values.
 	 * Meta tags will fill with default values if left empty. 
@@ -98,7 +104,6 @@ function generate_meta_tags(string $page_titel = '', string $search_title = '', 
 	 * 
 	 * @return string The html meta tags. 
 	 */
-	global $url_array;
 	global $display_name;
 	global $site_url;
 	global $site_domain;
@@ -106,7 +111,6 @@ function generate_meta_tags(string $page_titel = '', string $search_title = '', 
 	global $default_website_title;
 	global $default_website_description;
 
-	$page_titel     = $page_titel 	== '' ? $url_array[0] . ' | ' . $display_name : $page_titel;
 	$search_title 	= $search_title == '' ? $default_website_title . ' | ' . $display_name : $search_title;
 	$description 	= $description 	== '' ? $default_website_description : $description;
 
@@ -116,8 +120,7 @@ function generate_meta_tags(string $page_titel = '', string $search_title = '', 
 	}
 
 	// title
-	$meta_tags 	=  '<title>'.$page_titel.'</title>
-					<meta property="og:title" 	content="'.$search_title.'" />
+	$meta_tags 	=  '<meta property="og:title" 	content="'.$search_title.'" />
 					<meta name="twitter:title" 	content="'.$search_title.'" />';
 
 	// description
@@ -137,5 +140,19 @@ function generate_meta_tags(string $page_titel = '', string $search_title = '', 
 					<meta property="og:type"   content="website" />';
 
 	return $meta_tags;
+}
+
+function generate_title(string $title, bool $add_display_name = true)
+{
+	/**
+	 * Generate the html title tag
+	 * 
+	 * @param string Title for the page
+     * @param bool Add a vertical + the display name to the title
+	 * 
+	 * @return string The html meta tags. 
+	 */
+    global $display_name;
+    return '<title>' . $title . ($add_display_name ? " | $display_name" : '') . '</title>';
 }
 ?>
