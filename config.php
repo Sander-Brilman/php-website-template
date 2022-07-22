@@ -17,7 +17,7 @@ $site_url = ($ssl ? 'https://' : 'http://') . 'www.' . $site_domain . '/';
 
 // Will be used as title and description in case nothing is declared for that page
 
-$default_website_title          = ''; // about 50 characters
+$default_search_title           = ''; // about 50 characters
 $default_website_description    = ''; // about 160 characters
 
 

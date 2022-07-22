@@ -29,13 +29,11 @@ function get_page_info(array $url_array = [])
 	 *
 	 * @return array Returns a associative with a array of file paths and the metatags.
 	*/
-    global $display_name;
-
 	$php        = [];
 	$css        = [];
 	$js			= [];
 	$meta_tags  = '';
-    $title      = '';
+    $title      = generate_title($url_array[0]);
 	$no_index	= false;
 	$page_info  = [
 		'files' => [
@@ -44,7 +42,7 @@ function get_page_info(array $url_array = [])
 			'js'  => &$js,
 		],
 		'metatags' => &$meta_tags,
-        'page_title' => &$title,
+        'title' => &$title,
 	];
 
 	// insert your pages here.
@@ -52,7 +50,7 @@ function get_page_info(array $url_array = [])
 		case '':
 			$php[] = 'home';
 			$meta_tags = generate_meta_tags();
-            $title = generate_title($display_name, false);
+            $title = generate_title();
 			break;
 
 		default:
@@ -108,10 +106,10 @@ function generate_meta_tags(string $search_title = '', string $description = '',
 	global $site_url;
 	global $site_domain;
 
-	global $default_website_title;
+	global $default_search_title;
 	global $default_website_description;
 
-	$search_title 	= $search_title == '' ? $default_website_title . ' | ' . $display_name : $search_title;
+	$search_title 	= $search_title == '' ? $default_search_title . ' | ' . $display_name : $search_title;
 	$description 	= $description 	== '' ? $default_website_description : $description;
 
 	if ($image_path == '') {
@@ -142,10 +140,11 @@ function generate_meta_tags(string $search_title = '', string $description = '',
 	return $meta_tags;
 }
 
-function generate_title(string $title, bool $add_display_name = true)
+function generate_title(string $title = '', bool $add_display_name = true)
 {
 	/**
-	 * Generate the html title tag
+	 * Generate the html title tag.
+     * If no value is given it will use the display name
 	 * 
 	 * @param string Title for the page
      * @param bool Add a vertical + the display name to the title
@@ -153,6 +152,11 @@ function generate_title(string $title, bool $add_display_name = true)
 	 * @return string The html meta tags. 
 	 */
     global $display_name;
+
+    if ($title == '') {
+        return "<title>$display_name</title>";
+    }
+
     return '<title>' . $title . ($add_display_name ? " | $display_name" : '') . '</title>';
 }
 ?>
