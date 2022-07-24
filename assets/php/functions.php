@@ -27,6 +27,9 @@ function url(string $path_from_root)
      * @return string the absolute path
      */
     global $site_url;
+    if (substr($path_from_root, 0, 1) == '/') {
+        $path_from_root = substr($path_from_root, 1);
+    }
     return $site_url . $path_from_root;
 }
 ?>
