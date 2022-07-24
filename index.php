@@ -41,10 +41,10 @@ $page_info = get_page_info($url_array);
 		?>
 
 		<!-- javascript -->
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" async></script>
 		<?php
 		foreach ($page_info['files']['css'] as $path)
-			echo '<script src="'.url($path).'" defer></script>';
+			echo '<script src="'.url($path).'" async defer></script>';
 		?>
 
 	</head>

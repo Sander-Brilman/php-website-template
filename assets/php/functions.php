@@ -17,7 +17,7 @@ function redirect(string $url_from_root)
     return;
 }
 
-function url(string $path_from_root)
+function url(string $path_from_root = '')
 {
     /**
      * Creates a absolute path to a file or url.
