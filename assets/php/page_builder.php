@@ -33,7 +33,7 @@ function get_page_info(array $url_array = [])
 	$css        = [];
 	$js			= [];
 	$meta_tags  = '';
-    $title      = generate_title($url_array[0]);
+	$title      = generate_title($url_array[0]);
 	$no_index	= false;
 	$page_info  = [
 		'files' => [
@@ -42,7 +42,7 @@ function get_page_info(array $url_array = [])
 			'js'  => &$js,
 		],
 		'metatags' => &$meta_tags,
-        'title' => &$title,
+		'title' => &$title,
 	];
 
 	// insert your pages here.
@@ -50,13 +50,13 @@ function get_page_info(array $url_array = [])
 		case '':
 			$php[] = 'home';
 			$meta_tags = generate_meta_tags();
-            $title = generate_title();
+			$title = generate_title();
 			break;
 
 		default:
 			$php[] = '404';
 			$no_index = true;
-            $title = generate_title('Unknown page');
+			$title = generate_title('Unknown page');
 			break;
 	}
 
@@ -105,7 +105,7 @@ function generate_meta_tags(string $search_title = '', string $description = '',
 	global $display_name;
 	global $site_url;
 	global $site_domain;
-    global $theme_color;
+	global $theme_color;
 
 	global $default_search_title;
 	global $default_website_description;
@@ -123,7 +123,8 @@ function generate_meta_tags(string $search_title = '', string $description = '',
 					<meta name="twitter:title" 	content="'.$search_title.'" />';
 
 	// description
-	$meta_tags 	.= '<meta property="og:description"  content="'.$description.'" />
+	$meta_tags 	.= '<meta name="description"         content="'.$description.'">
+					<meta property="og:description"  content="'.$description.'" />
 					<meta name="twitter:description" content="'.$description.'" />';
 
 	// image & alt text.
@@ -137,7 +138,7 @@ function generate_meta_tags(string $search_title = '', string $description = '',
 	// Other
 	$meta_tags 	.= '<meta property="og:locale" content="nl_NL" />
 					<meta property="og:type"   content="website" />
-                    <meta name="theme-color"   content="'.$theme_color.'" />';
+					<meta name="theme-color"   content="'.$theme_color.'" />';
 
 	return $meta_tags;
 }
@@ -146,19 +147,19 @@ function generate_title(string $title = '', bool $add_display_name = true)
 {
 	/**
 	 * Generate the html title tag.
-     * If no value is given it will use the display name
+	 * If no value is given it will use the display name
 	 * 
 	 * @param string Title for the page
-     * @param bool Add a vertical + the display name to the title
+	 * @param bool Add a vertical + the display name to the title
 	 * 
 	 * @return string The html meta tags. 
 	 */
-    global $display_name;
+	global $display_name;
 
-    if ($title == '') {
-        return "<title>$display_name</title>";
-    }
+	if ($title == '') {
+		return "<title>$display_name</title>";
+	}
 
-    return '<title>' . $title . ($add_display_name ? " | $display_name" : '') . '</title>';
+	return '<title>' . $title . ($add_display_name ? " | $display_name" : '') . '</title>';
 }
 ?>
