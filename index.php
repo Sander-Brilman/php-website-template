@@ -20,9 +20,13 @@ include("assets/php/redirects.php");
 
 
 $page_info = get_page_info($url_array);
+
+$css_vars = "
+--theme-color: $theme_color;
+";
 ?>
 <!DOCTYPE html>
-<html lang="">
+<html lang="" style="<?= $css_vars ?>">
 	<head>
 		<?= $page_info['title'] ?>
 

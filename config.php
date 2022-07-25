@@ -12,6 +12,8 @@ $ssl                    = true;
 $display_name           = '';
 $site_domain            = ''; // dont forget to add extension like .com, www. is automatically added
 
+$theme_color            = '';
+
 $site_url = ($ssl ? 'https://' : 'http://') . 'www.' . $site_domain . '/';
 
 

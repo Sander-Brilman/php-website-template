@@ -105,6 +105,7 @@ function generate_meta_tags(string $search_title = '', string $description = '',
 	global $display_name;
 	global $site_url;
 	global $site_domain;
+    global $theme_color;
 
 	global $default_search_title;
 	global $default_website_description;
@@ -135,7 +136,8 @@ function generate_meta_tags(string $search_title = '', string $description = '',
 
 	// Other
 	$meta_tags 	.= '<meta property="og:locale" content="nl_NL" />
-					<meta property="og:type"   content="website" />';
+					<meta property="og:type"   content="website" />
+                    <meta name="theme-color"   content="'.$theme_color.'" />';
 
 	return $meta_tags;
 }
