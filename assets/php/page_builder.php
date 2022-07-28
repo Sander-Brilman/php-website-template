@@ -32,8 +32,8 @@ function get_page_info(array $url_array = [])
 	$php        = [];
 	$css        = [];
 	$js			= [];
-	$meta_tags  = '';
-	$title      = generate_title($url_array[0]);
+	$meta_tags  = generate_meta_tags();
+	$title      = generate_title();
 	$no_index	= false;
 	$page_info  = [
 		'files' => [
@@ -49,8 +49,6 @@ function get_page_info(array $url_array = [])
 	switch ($url_array[0]) {
 		case '':
 			$php[] = 'home';
-			$meta_tags = generate_meta_tags();
-			$title = generate_title();
 			break;
 
 		default:
@@ -110,7 +108,7 @@ function generate_meta_tags(string $search_title = '', string $description = '',
 	global $default_search_title;
 	global $default_website_description;
 
-	$search_title 	= $search_title == '' ? $default_search_title . ' | ' . $display_name : $search_title;
+	$search_title 	= $search_title == '' ? $default_search_title : $search_title;
 	$description 	= $description 	== '' ? $default_website_description : $description;
 
 	if ($image_path == '') {
@@ -136,7 +134,7 @@ function generate_meta_tags(string $search_title = '', string $description = '',
 	$meta_tags 	.= '<meta property="og:site_name" content="'.$site_domain.'" />';
 
 	// Other
-	$meta_tags 	.= '<meta property="og:locale" content="nl_NL" />
+	$meta_tags 	.= '<meta property="og:locale" content="" />
 					<meta property="og:type"   content="website" />
 					<meta name="theme-color"   content="'.$theme_color.'" />';
 
