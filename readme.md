@@ -8,7 +8,7 @@ To set links within your website use the `url` function.
 
 
 
-# **Dont Forget**
+## **Dont Forget**
 
 A list of things to cofigure
 
@@ -19,7 +19,7 @@ A list of things to cofigure
 5. **index.php:** If you are working on localhost set the replace string inside the if statement to the path to your project. 
 So if you have a url with *localhost/websites/example/* set the string to */websites/example/* (Dont forget the */* at the end!)
 
-this is to make sure the url is build correctly. Without it (taking the example above) $url_array[0] would always be *websites*.
+this is to make sure the `$url_array` variable is set correctly. Without it (taking the example above) `$url_array[0]` would always be *websites*.
 
 
 
