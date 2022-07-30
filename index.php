@@ -8,7 +8,7 @@ include_once('assets/php/debug_functions.php');
 
 // create url array
 $url_array 	= $_SERVER['REQUEST_URI'];
-if ($_SERVER['HTTP_HOST'] == 'www.localhost') $url_array = str_replace('', '', $url_array);
+if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) $url_array = str_replace('/your_project_path/', '', $url_array);
 
 $url_array 	= explode('/', $url_array);
 foreach ($url_array as &$value) {
