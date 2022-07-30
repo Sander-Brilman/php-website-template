@@ -1,7 +1,7 @@
-#Setup guide:
+# Setup guide:
 
 
-##**Dont Forget!**
+# **Dont Forget!**
 
 A list of things to cofigure outside this file.
 
@@ -17,7 +17,7 @@ this is to make sure the url is build correctly. Without it (taking the example 
 
 
 
-##**Variables**
+## **Variables**
 
 A guide on how to fill the variables listed in this file.
 
@@ -33,7 +33,7 @@ If the website is inside a folder like 'example.com/my-website/' add that path a
 that will show up in search results if there is no description set for that page.
 
 
-##**DataBase variables**
+## **DataBase variables**
 
 If you do not use a database (yet) you can comment out these lines in config.php
 ```
