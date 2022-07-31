@@ -25,8 +25,10 @@ dont forget to add extension like *.com*. The *www* is automatically added.
 
 - Add the website path to the `$site_domain` variable inside **config.php**. (like this *example.com/my-website/*)
 
-- Inside **index.php** there is a string replace with `$url_array = str_replace('/your_project_path/', '', $url_array);`.
-Replace the */your_project_path/* with the path to your website (taking the example above it would be `$url_array = str_replace('/my-website/', '', $url_array);`).
+- Inside **index.php** there is a string replace with
+`$url_array = str_replace('/your_project_path/', '', $url_array);`
+Replace the */your_project_path/* with the path to your website.
+(taking the example above it would be `$url_array = str_replace('/my-website/', '', $url_array);`).
 
 **why?** This is to make sure the `$url_array` variable is set correctly. Without it `$url_array[0]` would always be */my-website/*.
 
@@ -68,7 +70,8 @@ If you want to use a database you can fill in these variables at the end of the 
 
 A list of optional settings you can change outside the **config.php** file.
 
-- **assets/php/page_builder.php:** set the `og:locale` meta tag to the correct country value. (*nl_NL* for example) [complete list](https://www.science.co.il/language/Locale-codes.php)
+- **assets/php/page_builder.php:** set the `og:locale` meta tag to the correct country value. (*nl_NL* for example)
+[See the complete list](https://www.science.co.il/language/Locale-codes.php)
 - **index.php:** Set the lang tag in the `<html>` element
 - **favicon.ico:** Replace this with your own website logo
 - **robots.txt:** make sure that you configure your robots.txt when the website is finished.
