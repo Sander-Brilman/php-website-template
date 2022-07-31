@@ -33,15 +33,6 @@ function get_page_info(array $url_array = [])
 			$php[] = 'home';
 			break;
 
-        case 'my-page':
-            $php[] = 'file_name';
-            $css[] = 'basic_style';
-            $js[] = 'my_script';
-
-            $title = generate_title('Hello World!');
-            $no_index = true;
-            break;
-
 		default:
 			$php[] = '404';
 			$no_index = true;
