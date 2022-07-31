@@ -13,10 +13,7 @@ $display_name           = '';
 $site_domain            = '';
 
 $theme_color            = '';
-
 $site_url = ($ssl ? 'https://' : 'http://') . 'www.' . $site_domain . '/';
-
-
 
 $default_search_title           = ''; // about 50 characters
 $default_website_description    = ''; // about 160 characters

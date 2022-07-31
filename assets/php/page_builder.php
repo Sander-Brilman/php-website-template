@@ -5,25 +5,7 @@ function get_page_info(array $url_array = [])
 	 * Returns a array with info for the page. Including what files to load and the SEO meta tags.
 	 * Used to define scripts, files and meta tags that will be loaded for a page.
 	 * 
-	 * Files are stored as relative paths from the root, the types of files are:
-	 * - css
-	 * - js (javascript)
-	 * - php
-	 *
-	 * To add files you add the filename to the right array.
-	 * Files will automatically get a file extension.
-	 * 
-	 * To add set the metatags overwrite the meta_tags variable.
-	 * To disable indexing set $no_index to true.
-	 *
-	 * =============== File path info ===============
-	 *
-	 * CSS and JavaScript files will automatically include the path to the assets folder.
-	 *
-	 * PHP will automatically include the path to the pages folder.
-	 * To include a block add the 'blocks/' path to the beginning of the filename.
-	 *
-	 * ==============================================
+	 * Read readme.md for more information on how to use.
 	 *
 	 * @param array The url array formatted inside index.php
 	 *
@@ -50,6 +32,15 @@ function get_page_info(array $url_array = [])
 		case '':
 			$php[] = 'home';
 			break;
+
+        case 'my-page':
+            $php[] = 'file_name';
+            $css[] = 'basic_style';
+            $js[] = 'my_script';
+
+            $title = generate_title('Hello World!');
+            $no_index = true;
+            break;
 
 		default:
 			$php[] = '404';
