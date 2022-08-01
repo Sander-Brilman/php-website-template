@@ -18,19 +18,12 @@ To make the template work you need to fill the variables in the **config.php** f
 ## **Setup guide > !Important**
 
 Inside the **config.php** file there is a variable called `$site_domain` set this value to The domain of the website. (like this *example.com*)
-dont forget to add extension like *.com*. The *www* is automatically added.
 
+**If the website is inside a folder like `example.com/my-website/` do this:**:
 
-#### If the website is inside a folder like *example.com/my-website/* follow this guide:
+Set the `$site_folder` inside **config.php** to the folder with a `/` at the start & end. (like this `/my-website/`)
 
-- Add the website path to the `$site_domain` variable inside **config.php**. (like this *example.com/my-website/*)
-
-- Inside **index.php** there is a string replace with
-`$url_array = str_replace('/your_project_path/', '', $url_array);`
-Replace the */your_project_path/* with the path to your website.
-(taking the example above it would be `$url_array = str_replace('/my-website/', '', $url_array);`).
-
-**why?** This is to make sure the `$url_array` variable is set correctly. Without it `$url_array[0]` would always be */my-website/*.
+**Why?** This is to make sure the `$url_array` variable is set correctly. Without it `$url_array[0]` would always be */my-website/*.
 
 
 
@@ -41,6 +34,7 @@ All these variables can be found inside **config.php**.
 
 
 - **$debug_ips:** All ip adresses in this array can view dumps and run ip checks in the code.
+- **$ssl:** Set this to false if you DONT have a SSL certificate on your website.
 
 - **$display_name:** The name of the company or organisation
 - **$site_domain:** Read the **!Important** paragraph above on how to set this.
@@ -66,7 +60,7 @@ If you want to use a database you can fill in these variables at the end of the 
 ```
 
 
-## **Setup guide > Optional settings**
+## **Setup guide > Other settings**
 
 A list of optional settings you can change outside the **config.php** file.
 
@@ -98,6 +92,9 @@ So if you write `url('account/login')` it will return `https://example.com/my-we
 **Why use this?** Using relative paths in links can give wrong url's. See the table below.<br>
 The current url in this example is `https://example.com/my-website/shop/item-x`
 
+<br>
+<br>
+
 |Html link|Result|
 | --- | --- |
 | `<a href="account/login">Link</a>` | `https://example.com/my-website/shop/account/login` |
@@ -110,9 +107,9 @@ The current url in this example is `https://example.com/my-website/shop/item-x`
 
 To make url's load certain pages you can use **page_builder.php** inside the **assets/php/** folder.
 
-You can create pages inside the `get_page_info` function. Inside the switch case you can define pages based upon url's.
+You can create pages inside the `get_page_info` function. Inside the switch case you can define pages based upon url's.<br>
 The switch case will use the first item after the `/` of the url. 
-So with the url *https://example.com/my-page* the switch case will use *my-page*.
+So with the url *https://example.com/my-page* the switch case will use `my-page`.
 
 To create a page you simply add a case. (Make sure you dont forget the `break;`)
 ```php
