@@ -15,7 +15,7 @@ A basic php backend website template.
 To make the template work you need to fill the variables in the **config.php** file. 
 
 
-## **!Important**
+## **Setup guide > !Important**
 
 Inside the **config.php** file there is a variable called `$site_domain` set this value to The domain of the website. (like this *example.com*)
 dont forget to add extension like *.com*. The *www* is automatically added.
@@ -34,7 +34,7 @@ Replace the */your_project_path/* with the path to your website.
 
 
 
-## **Optional variables**
+## **Setup guide > Optional variables**
 
 These variables are optional but are reccomended you declare them.
 All these variables can be found inside **config.php**.
@@ -53,7 +53,7 @@ All these variables can be found inside **config.php**.
 
 
 
-## **DataBase variables**
+## **Setup guide > DataBase variables**
 
 If you want to use a database you can fill in these variables at the end of the file.
 ```php
@@ -66,7 +66,7 @@ If you want to use a database you can fill in these variables at the end of the 
 ```
 
 
-## **Optional settings**
+## **Setup guide > Optional settings**
 
 A list of optional settings you can change outside the **config.php** file.
 
@@ -85,7 +85,28 @@ This template is pretty easy to use once you know the trick ;)
 
 
 
-## Set pages in **page_builder.php**
+# How to use > links on the webpage
+
+If your website is inside a folder like *example.com/my-website/* read this.
+
+To set links to a different webpage you can use the `url` function.
+The `url` function sets a absolute path to the page you want.
+
+All you have to do is give the page/path as a parameter.
+So if you write `url('account/login')` it will return `https://example.com/my-website/account/login`
+
+**Why use this?** Using relative paths in links can give wrong url's. See the table below.
+The current url in this example is `https://example.com/my-website/shop/item-x`
+
+|Html link|Result|
+| --- | --- |
+| `<a href="account/login">Link</a>` | `https://example.com/my-website/shop/account/login` |
+| `<a href="/account/login">Link</a>` | `https://example.com/account/login` |
+| `<a href="<?= url('account/login') ?>">Link</a>` | `https://example.com/my-website/account/login` |
+
+
+
+## How to use > Set pages in page_builder
 
 To make url's load certain pages you can use **page_builder.php** inside the **assets/php/** folder.
 
@@ -141,7 +162,7 @@ If you want to load a CSS or JavaScript file on every page you can include them 
 
 
 
-## Title and Metatags in **page_builder.php**
+## How to use > Title and Metatags in pages
 
 To set a title for the page you can use the `$title` variable.
 You can set it manually like 
@@ -205,7 +226,7 @@ case 'my-page':
 And that is all there is to it :)
 
 
-## Redirects
+## How to use > Redirects
 
 To set redirects you can use the **/assets/php/redirects.php** file.
 Here you can set condidions for your redirects.
@@ -221,7 +242,7 @@ Use the redirect function to redirect to the new url.
 This function uses the php `header` function and executes a `exit;` after it.
 
 
-## Form processing
+## How to use > Form processing
 
 Since all the requests run through the **index.php** you can put all your form processing inside **/assets/php/process_form.php**
 Setting a `action` attribute inside your form is only useful for sending the user to a different page.
