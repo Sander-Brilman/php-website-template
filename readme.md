@@ -85,7 +85,7 @@ This template is pretty easy to use once you know the trick ;)
 
 
 
-# How to use > links on the webpage
+## How to use > links on the webpage
 
 If your website is inside a folder like *example.com/my-website/* read this.
 
