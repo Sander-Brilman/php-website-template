@@ -89,13 +89,13 @@ This template is pretty easy to use once you know the trick ;)
 
 If your website is inside a folder like *example.com/my-website/* read this.
 
-To set links to a different webpage you can use the `url` function.
+To set links to a different webpage you can use the `url` function.<br>
 The `url` function sets a absolute path to the page you want.
 
-All you have to do is give the page/path as a parameter.
+All you have to do is give the page/path as a parameter.<br>
 So if you write `url('account/login')` it will return `https://example.com/my-website/account/login`
 
-**Why use this?** Using relative paths in links can give wrong url's. See the table below.
+**Why use this?** Using relative paths in links can give wrong url's. See the table below.<br>
 The current url in this example is `https://example.com/my-website/shop/item-x`
 
 |Html link|Result|
