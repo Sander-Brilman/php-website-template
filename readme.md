@@ -19,7 +19,7 @@ To make the template work you need to fill the variables in the **config.php** f
 
 Inside the **config.php** file there is a variable called `$site_domain` set this value to The domain of the website. (like this *example.com*)
 
-**If the website is inside a folder like `example.com/my-website/` do this:**:
+**If the website is inside a folder like `example.com/my-website/` do this:**
 
 Set the `$site_folder` inside **config.php** to the folder with a `/` at the start & end. (like this `/my-website/`)
 
@@ -60,7 +60,7 @@ If you want to use a database you can fill in these variables at the end of the 
 ```
 
 
-## **Setup guide > Other settings**
+## **Setup guide > Other optional settings**
 
 A list of optional settings you can change outside the **config.php** file.
 
@@ -78,10 +78,26 @@ A list of optional settings you can change outside the **config.php** file.
 This template is pretty easy to use once you know the trick ;)
 
 
+## How to use > The $url_array variable.
+
+The current url is split into a array on the `/`.
+
+So if the url is `https://example.com/account/login` the $url_array will be:
+```php
+array(2) {
+  [0] =>  "account"
+  [1] =>  "login"
+}  
+```
+
+**note:** Url parameters and `#` will automatically be filtered from the array.
+
+
+
 
 ## How to use > links on the webpage
 
-If your website is inside a folder like *example.com/my-website/* read this.
+**If your website is inside a folder like *example.com/my-website/* read this.**
 
 To set links to a different webpage you can use the `url` function.<br>
 The `url` function sets a absolute path to the page you want.
@@ -117,8 +133,8 @@ case 'my-page':
     break;
 ```
 
-To load a php page on that url you simply add the name of the php file to the `$php` variable.
-you dont have to use the `.php` file extention but it wont break if you include it.
+To load a php page on that url you simply add the name of the php file to the `$php` variable.<br>
+Using the `.php` file extention is optional
 ```php
 case 'my-page':
     $php[] = 'file_name';
@@ -128,7 +144,7 @@ case 'my-page':
 It will automatically include the **file_name.php** file from the `/pages/` folder.
 If you want to load a block you can add `/blocks/` to the beginning of the file name. (like this `/blocks/file_name`)
 
-Inside the **/pages/file_name.php** you can put your html and php code. 
+Inside the **/pages/file_name.php** you can put your html and php code. <br>
 **note:** The php file is loaded directly inside the `<body>` element.
 
 To load CSS of JavaScript files you can use the `$css` or `$js` variables and use them the same way. 
@@ -141,7 +157,7 @@ case 'my-page':
     break;
 ```
 
-You can include as many files as you want.
+You can include as many files as you want.<br>
 **note:** Files will be loaded in order in witch they were added.
 ```php
 case 'my-page':
@@ -186,7 +202,7 @@ case 'my-page':
     break;
 ```
 **note:** When using the `generate_title` function a vertical line (`|`) and the defined display title will be added to the title by default.
-To turn this off set the second parameter to `false`.
+To turn this off set the second parameter to `false`.<br><br>
 `$title = generate_title('Hello World!', false);`
 
 
@@ -220,14 +236,14 @@ case 'my-page':
     break;
 ```
 
-And that is all there is to it :)
+And that is how easy it can be :)
 
 
-## How to use > Redirects
+## How to use > Set redirects
 
 To set redirects you can use the **/assets/php/redirects.php** file.
 Here you can set condidions for your redirects.
-This file is run after the `$url_array` variable is defined, So you can check for the correct url.
+This file is run after the `$url_array` variable is defined, So you can use the url values inside your conditions.
 
 ```php
 if ($url_array[0] == 'search' && !isset($_GET['order'])) {

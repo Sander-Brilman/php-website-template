@@ -4,7 +4,7 @@
  * 
  */
 $debug_ips = [
-    '::1',
+	'::1',
 ];
 
 $ssl                    = true;
@@ -20,13 +20,13 @@ $default_website_description    = ''; // about 160 characters
 
 
 try {
-    // Database variables
-    $host       = '';
-    $db_name    = '';
-    $user       = '';
-    $password   = '';
+	// Database variables
+	$host       = '';
+	$db_name    = '';
+	$user       = '';
+	$password   = '';
 
-    $db = new PDO('mysql:host='.$host.';dbname='.$db_name, $user, $password);
+	$db = new PDO('mysql:host='.$host.';dbname='.$db_name, $user, $password);
 } catch (PDOException $e) { }
 
 
