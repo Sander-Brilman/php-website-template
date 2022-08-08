@@ -47,7 +47,7 @@ $css_vars = "
 		<!-- javascript -->
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" async></script>
 		<?php
-		foreach ($page_info['files']['css'] as $path)
+		foreach ($page_info['files']['js'] as $path)
 			echo '<script src="'.url($path).'" async defer></script>';
 		?>
 

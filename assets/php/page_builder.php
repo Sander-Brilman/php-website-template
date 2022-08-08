@@ -69,7 +69,7 @@ function get_page_info(array $url_array = [])
 	return $page_info;
 }
 
-function generate_meta_tags(string $search_title = '', string $description = '', string $image_path = '', string $image_alt = '') {
+function generate_meta_tags(string $search_title = '', string $description = '', string $path_from_root = '', string $image_alt = '') {
 	/**
 	 * Generate the html meta tags with the given values.
 	 * Meta tags will fill with default values if left empty. 
@@ -93,8 +93,8 @@ function generate_meta_tags(string $search_title = '', string $description = '',
 	$search_title 	= $search_title == '' ? $default_search_title : $search_title;
 	$description 	= $description 	== '' ? $default_website_description : $description;
 
-	if ($image_path == '') {
-		$image_path = $site_url.'favicon.ico';
+	if ($path_from_root == '') {
+		$path_from_root = 'favicon.ico';
 		$image_alt  = $display_name.' Logo';
 	}
 
@@ -108,8 +108,8 @@ function generate_meta_tags(string $search_title = '', string $description = '',
 					<meta name="twitter:description" content="'.$description.'" />';
 
 	// image & alt text.
-	$meta_tags 	.= '<meta property="og:image"  		content="'.$image_path.'" />
-					<meta name="twitter:image" 		content="'.$image_path.'" />
+	$meta_tags 	.= '<meta property="og:image"  		content="'.url($path_from_root).'" />
+					<meta name="twitter:image" 		content="'.url($path_from_root).'" />
 					<meta property="og:image:alt" 	content="'.$image_alt.'"  />';
 
 	// site name

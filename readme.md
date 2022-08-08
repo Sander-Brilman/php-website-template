@@ -217,12 +217,12 @@ case 'my-page':
     $meta_tags = generate_meta_tags(
         'SEO title',
         'description',
-        url('image_path.jpg'),
+        'assets/img/my-logo.jpg',
         'Image alt',
     );
     break;
 ```
-**note:** use the `url` funtion for the image path to get a absolute path to your image.
+**note:** Enter the image part from the root. This will automatically be converted to a full url.
 
 If you dont want this page to be indexed simply set `$no_index` to `true`;
 ```php
