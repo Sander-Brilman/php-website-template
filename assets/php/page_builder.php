@@ -1,4 +1,9 @@
 <?php
+/**
+ * How to use -> https://github.com/Sander-Brilman/php-website-template#how-to-use--set-pages-in-page_builder
+ */
+
+
 function get_page_info(array $url_array = [])
 {
 	/**
@@ -83,7 +88,6 @@ function generate_meta_tags(string $search_title = '', string $description = '',
 	 * @return string The html meta tags. 
 	 */
 	global $display_name;
-	global $site_url;
 	global $site_domain;
 	global $theme_color;
 
@@ -99,7 +103,8 @@ function generate_meta_tags(string $search_title = '', string $description = '',
 	}
 
 	// title
-	$meta_tags 	=  '<meta property="og:title" 	content="'.$search_title.'" />
+	$meta_tags 	=  '<meta name="title" 	        content="'.$search_title.'" />
+                    <meta property="og:title" 	content="'.$search_title.'" />
 					<meta name="twitter:title" 	content="'.$search_title.'" />';
 
 	// description
