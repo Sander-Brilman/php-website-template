@@ -17,7 +17,7 @@ A few perks are:
 #### I highly recommend you read these BEFORE you start working with the template
 - [Setup guide > Required values (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
 - [How to use > links on the webpage (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
-- [Default files & settings (!Important)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
+- [Default files & settings (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
 <br>
 <br>
 <br>
