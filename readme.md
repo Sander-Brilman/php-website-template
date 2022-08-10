@@ -1,5 +1,5 @@
 # Template
-#### To setup the template read *Setup guide* (Its realy easy)
+#### To setup the template read *Setup guide* (Its really easy)
 <br>
 
 This is a php backend website template that redirects all requests to `index.php` allowing for custom url's and 404 pages.
@@ -15,13 +15,12 @@ A few perks are:
 
 ### Must-reads:
 #### I highly recommend you read these BEFORE you start working with the template
-- **Setup guide > Required values (Important!)**
-- **How to use > links on the webpage (Important!)**
-- **Default files & settings (!Important)**
+- [Setup guide > Required values (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
+- [How to use > links on the webpage (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
+- [Default files & settings (!Important)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
 <br>
 <br>
 <br>
-
 
 **note:** This template is constantly changing & improving. Beware of changes in the code when downloading it again.
 
@@ -141,7 +140,7 @@ You can create pages inside the `get_page_info` function. Inside the switch case
 The switch case will use the first item after the `/` of the url. 
 So with the url *https://example.com/my-page* the switch case will use `my-page`.
 
-To create a page you simply add a case. (Make sure you dont forget the `break;`)
+To create a page you simply add a case. (Make sure you don't forget the `break;`)
 ```php
 case 'my-page':
     break;

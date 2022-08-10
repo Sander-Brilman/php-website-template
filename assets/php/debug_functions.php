@@ -1,34 +1,35 @@
 <?php
-function start_timer()
+function start_timer(): int
 {
     /**
      * Start a timer for measuring the runtime.
-     * Store the return value in a variable.
+     * Pass this value to the end_timer function.
      * 
      * @return int
      */
     return microtime(true);
 }
 
-function end_timer(int $timer_start, string $feedback)
+function end_timer(int $timer_start): int
 {
     /**
-     * Echo the result of the timer with a feedback
+     * Return the time difference between the start time and the current time
+     * Used to measure performance 
      * 
      * @param int the value received from start_timer
      * 
-     * @param string additional message to be printed
-     * 
      * @return void
      */
-    echo "milliseconds passed for $feedback -> ".(microtime(true)-$timer_start)*1000;
+   return (microtime(true)-$timer_start)*1000;
 }
 
-function check_debug_ip()
+function check_debug_ip(): bool
 {
     /**
-     * Check if the current IP adress is listed as a debug ip
-     * (defined in the config file)
+     * Check if the current IP address is listed as a debug ip
+     * Can be used to run test code on a live website.
+     * 
+     * (list defined in the config file)
      * 
      * @return bool
      */
@@ -36,11 +37,13 @@ function check_debug_ip()
     return in_array($_SERVER['REMOTE_ADDR'], $debug_ips);
 }
 
-function dump($data, bool $ip_check = true) 
+function dump($data, bool $ip_check = true): void
 {
     /**
-     * Dumps value in a readable pop-up.
-     * Prints additional info about where it was called aswell.
+     * Prints value in a readable pop-up.
+     * Prints additional info about where it was called.
+     * 
+     * Used for debugging
      * 
      * @param mixed the value to be dumped
      * 

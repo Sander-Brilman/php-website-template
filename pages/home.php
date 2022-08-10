@@ -1,5 +1,5 @@
 <?php
 /**
- * Home page.
+ * Default index page that will get loaded
  */
 ?>
