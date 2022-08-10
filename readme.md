@@ -1,16 +1,20 @@
 # Template
-#### To setup the template (Its realy easy) read **Setup guide**
+#### To setup the template read *Setup guide* (Its realy easy)
 <br>
-A basic php backend website template.
 
-- Redirects all requests to `index.php` allowing for custom url's and 404 pages.
-- Easy way to make new pages and load custom stylesheets.
+This is a php backend website template that redirects all requests to `index.php` allowing for custom url's and 404 pages.
+
+A few perks are:
+
+- Easy way to create new pages and load custom css and js files on them.
 - Has SEO build into it
+- A clean way of dealing with forms and redirects
 - Always include header and footer on a every page
 
 
 
 ### Must-reads:
+#### I highly recommend you read these BEFORE you start working with the template
 - **Setup guide > Required values (Important!)**
 - **How to use > links on the webpage (Important!)**
 - **Default files & settings (!Important)**
@@ -300,7 +304,7 @@ Setting a `action` attribute on your form is only useful for sending the user to
 
 
 
-# **Default files & settings (!Important)**
+# **Default files & settings (Important!)**
 Files & settings that are defined by default. Keeping/Removing them is optional and will not break the template
 
 - Jquery and bootstraps are included with CDN. Inside `index.php` `<head>` element.
