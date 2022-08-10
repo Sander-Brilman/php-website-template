@@ -34,7 +34,6 @@ All these variables can be found inside **config.php**.
 
 
 - **$debug_ips:** All ip adresses in this array can view dumps and run ip checks in the code.
-- **$ssl:** Set this to false if you DONT have a SSL certificate on your website.
 
 - **$display_name:** The name of the company or organisation
 - **$site_domain:** Read the **!Important** paragraph above on how to set this.

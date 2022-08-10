@@ -7,8 +7,6 @@ $debug_ips = [
 	'::1',
 ];
 
-$ssl                    = true;
-
 $display_name           = '';
 $site_domain            = '';
 $site_folder            = ''; // Dont forget the '/' at the start & end
@@ -33,7 +31,7 @@ try {
 
 // _______________Dont change this_______________
 
-$site_url = $ssl ? 'https://' : 'http://';
+$site_url = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
 $site_url .= 'www.';
 $site_url .= $site_domain . $site_folder;
 
