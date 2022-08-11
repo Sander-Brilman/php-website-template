@@ -1,6 +1,6 @@
 RewriteEngine On
 
-RewriteCond %{REQUEST_FILENAME} !\.(php|ico)$
+RewriteCond %{REQUEST_FILENAME} !\.(ico)$
 RewriteRule ^(.*)$ index.php [QSA]
 
 #Force www:
