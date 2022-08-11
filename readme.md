@@ -17,6 +17,7 @@ A few perks are:
 #### I highly recommend you read these BEFORE you start working with the template
 - [Setup guide > Required values (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
 - [How to use > links on the webpage (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
+- [How to use > Security features. (Useful!)]()
 - [Default files & settings (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
 <br>
 <br>
@@ -119,6 +120,7 @@ All you have to do is give the page/path as a parameter.<br>
 So taking the example above, if you write `url('account/login')` it will return `https://example.com/my-website/account/login`
 
 **Why use this?** Using relative paths in links can give wrong url's. See the table below.<br>
+
 **note:** The current url in this example is `https://example.com/my-website/shop/item-x` and you want to set a link to `https://example.com/my-website/account/login`
 
 <br>
@@ -296,11 +298,50 @@ This function uses the php `header` function and executes a `exit;` after it.
 ## How to use > Form processing
 
 Since <ins>all</ins> the requests run through `/assets/php/process_form.php` you can put all your form processing inside this file.<br>
-**Hint:** If you have multiple forms on the website you should put a `name` attribute on your submit buttons to identify the form.
-This prevents confusion and makes sure only the right form will be processed
 
-Setting a `action` attribute on your form is only useful for sending the user to a different page on submit.
+To clear the post after you are done processing use the `redirect` function.<br>
 
+If you want the user to remain on the same page set the last parameter of the `redirect` function to `true`. This will redirect the user to the same page clearing the post request.
+
+```php
+redirect('', true, false);
+```
+
+**Note:** I recommend using the `create_form_id` & `check_form_id` functions to identify your forms and prevent Cross Site Request Forgery. (Read below on how to use)
+
+
+## How to use > Security features. (Useful!)
+This template currently has 2 easy-to-use security features implemented.
+All these features are optional to use.
+
+### Security features > `safe_echo`.
+The `safe_echo` function that works like `echo` but runs everything through the `htmlspecialchars` php function making it safe (and easy) to safely print user input.
+
+### Security features > Cross Site Request Forgery.
+To deal with Cross Site Request Forgery there are 2 functions defined in `assets/php/functions.php`, `create_form_id` & `check_form_id`
+
+To secure your form processing pick a name for your form ('delete-form' for example)<br>
+
+When creating the submit button set both `name` and the `value` attribute on your submit button.
+
+- Set the `name` attribute to the picked name ('delete-form' in this case)
+- Set the `value` attribute to the return value of the `create_form_id` function with the picked name as parameter
+
+Like this:
+```html
+<form method="post">
+    <button name="delete-form" value="<?= create_form_id('delete-form') ?>"></button>
+</form>
+```
+
+When processing the form all you have to do is use `check_form_id` with the picked name as parameter inside as a condition.
+
+Like this:
+```php
+if (check_form_id('delete-form')) {
+    // form processing goes here
+}
+```
 
 
 # **Default files & settings (Important!)**
