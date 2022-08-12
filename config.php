@@ -67,5 +67,6 @@ $url_array 	= explode('/', $url_array);
 
 foreach ($url_array as &$value) {
 	$value = explode('?', $value)[0];
+	$value = explode('#', $value)[0];
 }
 ?>
