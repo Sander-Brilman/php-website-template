@@ -16,13 +16,17 @@ function url(string $path_from_root = ''): string
      * @return string the absolute path
      */
     global $site_url;
+    $path_array = explode('/', $path_from_root);
 
     // remove leading '/'
-    if (substr($path_from_root, 0, 1) == '/') {$path_from_root = substr($path_from_root, 1);  }  
+    if (substr($path_from_root, 0, 1) == '/') {$path_from_root = substr($path_from_root, 1);}  
+
 
     // remove trailing '/'
-    $param_location = strpos($path_from_root, '?');
-    $path_from_root = $param_location === false ? substr($path_from_root,0,strlen($path_from_root)-1) : substr($path_from_root,0,$param_location-1).substr($path_from_root,$param_location);
+    if (end($path_array) === '') {
+        $param_location = strpos($path_from_root, '?');
+        $path_from_root = $param_location === false ? substr($path_from_root,0,strlen($path_from_root)-1) : substr($path_from_root,0,$param_location-1).substr($path_from_root,$param_location);    
+    }
 
     return $site_url . $path_from_root;
 }
