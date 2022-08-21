@@ -6,9 +6,9 @@
  * 
  * 
  * --------------------------------------------------------
- *          How to: Set required values (Important!)
+ *          How to: The $site_folder variable
  * --------------------------------------------------------
- * - @link https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important
+ * - @link https://github.com/Sander-Brilman/php-website-template#setup-guide--website-inside-a-folder-important
  * 
  * 
  * 
@@ -29,13 +29,13 @@ $debug_ips = [
 	'::1',
 ];
 
-$display_name           = '';
-$site_domain            = '';
+
 $site_folder            = ''; // Don't forget the '/' at the start & end 
 
 $theme_color            = ''; // css color notation
-$locate                 = ''; // language_TERRITORY format (nl_NL or en_US for example)
+$locate                 = ''; // language_TERRITORY format ('nl_NL' or 'en_US' for example)
 
+$display_name                   = ''; // company / organization name
 $default_search_title           = ''; // about 50 characters
 $default_website_description    = ''; // about 160 characters
 
@@ -56,6 +56,8 @@ try {
  *             Don't change anything below
  * ===========================================================
 */
+
+$site_domain = $_SERVER['SERVER_NAME'];
 
 $site_url = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
 $site_url .= 'www.';
