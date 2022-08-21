@@ -1,21 +1,19 @@
 # Template
-#### To setup the template read *Setup guide* (Its really easy)
+#### To setup the template read *[Setup guide](https://github.com/Sander-Brilman/php-website-template#setup-guide)* (Its really easy)
 <br>
 
 This is a php backend website template that redirects all requests to `index.php` allowing for custom url's and 404 pages.
 
-A few perks are:
-
 - Easy way to create new pages and load custom css and js files on them.
-- Has SEO build into it
-- A clean way of dealing with forms and redirects
+- Has SEO functionalities build into it
+- A clean (and safe) way of dealing with forms and redirects
 - Always include header and footer on a every page
 
 
 
 ### Must-reads:
 #### I highly recommend you read these BEFORE you start working with the template
-- [Setup guide > Required values (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
+- [Setup guide (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide)
 - [How to use > links on the webpage (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
 - [How to use > Security features. (Useful!)](https://github.com/Sander-Brilman/php-website-template#how-to-use--security-features-useful)
 - [Default files & settings (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
@@ -23,25 +21,29 @@ A few perks are:
 <br>
 <br>
 
-**note:** This template is constantly changing & improving. Beware of changes in the code when downloading it again.
+**note:** This template is constantly changing & improving. Beware of changes in the code when downloading a new version.
 
 I try to keep the documentation updated with the new changes.
 
 
 # Setup guide:
 
-To make the template work you need to fill the variables in the `config.php` file. 
+To make the template work you need to define the variables inside the `config.php` file. 
+
+if your website is inside a folder (`www.example.com/my-website/` for example) read the **Setup guide > Website inside a folder (Important!)** below.
 
 
-## **Setup guide > Required values (Important!)**
+## **Setup guide > Website inside a folder (Important!)**
 
-Inside the `config.php` file there is a variable called `$site_domain` set this value to The domain of the website. (like *example.com*)
+**Only necessary if your website is inside a folder like `www.example.com/my-website/`**
+<br>
 
-**If the website is inside a folder like `example.com/my-website/` follow this:**
+Inside the `config.php` file there is a variable called `$site_folder`.<br>
+Set the variable to the folder(s) with a starting & trailing `/` at the start & end.<br>
+<br>
+So the example `www.example.com/my-website/` would be `$site_folder = '/my-website/';`
 
-Set the `$site_folder` variable inside `config.php` to the folder with a `/` at the start & end. (like this `/my-website/`)
-
-**Why?** This is to make sure the `$url_array` variable is set correctly. Without it `$url_array[0]` would always be */my-website/*.
+**Why?** This is to make sure the `$url_array` variable is set correctly. Without it `$url_array[0]` would always be `'my-website'`.
 
 
 
@@ -54,7 +56,6 @@ All these variables can be found inside `config.php`.
 - **$debug_ips:** All ip addresses in this array can view dumps and run ip checks in the code.
 
 - **$display_name:** The name of the company or organization
-- **$site_domain:** Read the **!Important** paragraph above on how to set this.
 
 - **$theme_color:** A css color notation of the website theme color
 
@@ -89,7 +90,7 @@ A list of optional settings you can change outside the `config.php` file.
 
 # **How to use**
 
-This template is pretty easy to use once you know the trick ;)
+This template is easy to use once you know the trick ;)
 
 
 ## How to use > The `$url_array` variable.
@@ -104,6 +105,8 @@ array(2) {
 }  
 ```
 
+You can use this variable to load different content based on the url.<br>
+
 **note:** Url parameters and `#` will automatically be filtered from the array.
 
 
@@ -111,17 +114,15 @@ array(2) {
 
 ## How to use > links on the webpage (Important!)
 
-**If your website is inside a folder like `example.com/my-website/` read this.**
-
-To set links to a different webpage you can use the `url` function.<br>
-The `url` function sets a absolute path to the page you want.
+To create a url you can use the `url` function.<br>
+The `url` function returns absolute path to the page you want. The advantage is that the url will always be correct. Even if you change domain names or put your website inside a folder.
 
 All you have to do is give the page/path as a parameter.<br>
-So taking the example above, if you write `url('account/login')` it will return `https://example.com/my-website/account/login`
+So taking the example `url('account/login')` it will return `https://your-domain.com/my-website-folder/account/login`
 
 **Why use this?** Using relative paths in links can give wrong url's. See the table below.<br>
 
-**note:** The current url in this example is `https://example.com/my-website/shop/item-x` and you want to set a link to `https://example.com/my-website/account/login`
+**The current url in this example is `https://example.com/my-website/shop/item-x` and you want to set a link to `https://example.com/my-website/account/login`**
 
 <br>
 <br>
@@ -136,11 +137,11 @@ So taking the example above, if you write `url('account/login')` it will return 
 
 ## How to use > Set pages in page_builder
 
-To make url's load certain pages you can use `page_builder.php` inside the `assets/php/` folder.
+To assign urls to load pages you can use `page_builder.php` inside the `assets/php/` folder.
 
-You can create pages inside the `get_page_info` function. Inside the switch case you can define pages based upon url's.<br>
+You can create pages inside the `get_page_info` function. Inside the switch case you can load php, js and css files.<br>
 The switch case will use the first item after the `/` of the url. 
-So with the url *https://example.com/my-page* the switch case will use `my-page`.
+So with the url `https://example.com/my-page` the switch case will use `my-page`.
 
 To create a page you simply add a case. (Make sure you don't forget the `break;`)
 ```php
@@ -159,11 +160,11 @@ case 'my-page':
 It will automatically include the `file_name.php` file from the `/pages/` folder.
 If you want to load a block you can add `/blocks/` to the beginning of the file name. (like this `/blocks/file_name`)
 
-Inside the `/pages/file_name.php` you can put your html and php code. <br>
-**note:** The php file is loaded directly inside the `<body>` element.
+Inside the `/pages/` folder you can create your `file_name.php` file and put your content inside<br>
+**note:** The php files are loaded directly inside the `<body>` element.
 
-To load CSS of JavaScript files you can use the `$css` or `$js` variables and use them the same way. 
-The CSS and JavaScript files will be fetched from the `/assets/` folder. (`/assets/css/` for css and `/assets/js/` for JavaScript)
+To include CSS of JavaScript files for the page you can use the `$css` or `$js` variables and use them the same way. 
+The CSS and JavaScript files will be fetched from the `/assets/` folder (`/assets/css/` for css and `/assets/js/` for JavaScript) and will be included in the `<head>` element.
 ```php
 case 'my-page':
     $php[] = 'file_name';
@@ -177,11 +178,9 @@ You can include as many files as you want.<br>
 ```php
 case 'my-page':
     $php[] = 'file_name';
-    
     $css[] = 'basic_style';
     $css[] = 'my_style';
     $css[] = 'header_style';
-
     $js[] = 'my_script';
     $js[] = 'mobile_menu';
     break;
