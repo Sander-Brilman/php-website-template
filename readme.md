@@ -1,6 +1,6 @@
 # Template
 #### To setup the template read *[Setup guide](https://github.com/Sander-Brilman/php-website-template#setup-guide)* (Its really easy)
-<br>
+<br> 
 
 This is a php backend website template that redirects all requests to `index.php` allowing for custom url's and 404 pages.
 
