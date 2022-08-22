@@ -59,13 +59,13 @@ try {
 
 $site_domain = $_SERVER['SERVER_NAME'];
 
-$site_url = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
+$site_url  = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
 $site_url .= 'www.';
 $site_url .= $site_domain . $site_folder;
 
-$url_array 	= $_SERVER['REQUEST_URI'];
-$url_array  = str_replace($site_folder, '', $url_array);
-$url_array 	= explode('/', $url_array);
+$url_array = $_SERVER['REQUEST_URI'];
+$url_array = str_replace($site_folder, '', $url_array);
+$url_array = explode('/', $url_array);
 
 foreach ($url_array as &$value) {
 	$value = explode('?', $value)[0];
