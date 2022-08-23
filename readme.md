@@ -65,9 +65,9 @@ All these variables can be found inside `config.php`.
 - **$locate** set this value to a value of `language_TERRITORY` format. (*nl_NL* or *en_US* for example, [see the complete list](https://www.science.co.il/language/Locale-codes.php))
 
 
-## **Setup guide > DataBase variables**
+**DataBase variables**
 
-If you want to use a database you can fill in these variables at the end of the file.
+If you want to use a database you can fill in these variables.
 ```php
     $host       = '';
     $db_name    = '';
@@ -317,30 +317,35 @@ All these features are optional to use.
 The `safe_echo` function that works like `echo` but runs everything through the `htmlspecialchars` php function making it safe (and easy) to safely print user input.
 
 ### Security features > Cross Site Request Forgery.
-To deal with Cross Site Request Forgery there are 2 functions defined in `assets/php/functions.php`, `create_form_id` & `check_form_id`
+To deal with Cross Site Request Forgery 2 functions are defined in `assets/php/functions.php`:<br>`set_form_id` & `check_form_id`
 
 To secure your form processing pick a name for your form ('delete-form' for example)<br>
 
-When creating the submit button set both `name` and the `value` attribute on your submit button.
+Use that name for both setting and checking the form.
 
-- Set the `name` attribute to the picked name ('delete-form' in this case)
-- Set the `value` attribute to the return value of the `create_form_id` function with the picked name as parameter
 
-Like this:
+
+**Setting the form id:**
 ```html
 <form method="post">
-    <button name="delete-form" value="<?= create_form_id('delete-form') ?>"></button>
+    <?= set_form_id('delete-form') ?>
+
+    <p>Are you sure you want to delete this?</p>
+    <button type="submit" name="yes">Yes</button>
+    <button type="submit" name="no">No</button>
 </form>
 ```
 
-When processing the form all you have to do is use `check_form_id` with the picked name as parameter inside as a condition.
 
-Like this:
+
+**Checking the form id:**
 ```php
 if (check_form_id('delete-form')) {
     // form processing goes here
 }
 ```
+
+**Note:** the `set_form_id` function will return a hidden checkbox with the picked name set as the `name` attribute. So make sure there are no other inputs with the same `name` attribute.
 
 
 # **Default files & settings (Important!)**

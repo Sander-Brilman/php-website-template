@@ -46,37 +46,39 @@ function redirect(string $url_from_root, bool $use_url_function = true, bool $sa
      * @return void
      */
     global $site_folder;
-    if ($same_page) {
-        $redirect = url(str_replace($site_folder, '', $_SERVER['REQUEST_URI']));
-    } else {
-        $redirect = $use_url_function ? url($url_from_root) : $url_from_root;
-    }
+
+    $redirect = $same_page 
+        ? url(str_replace($site_folder, '', $_SERVER['REQUEST_URI']))
+        : ($use_url_function ? url($url_from_root) : $url_from_root);
+
+
     header('location: '.$redirect);
     exit;
     return;
 }
 
-function create_form_id(string $unique_name, int $verify_code_length = 10): string
+function set_form_id(string $form_name): string
 {
     /**
      * Creates a unique verify code for a form.
      * This code is used to verify that the form is from this website.
      * 
-     * Set the given unique name as the 'name' attribute and the return string as the 'value' attribute of the submit button.
+     * Returns a hidden checkbox element with the id set.
+     * 
      * Use the check_form_id function to check if that specific form has been submitted.
      * 
-     * Purpose is to prevent Cross Site Request Forgery.
+     * Purpose is to prevent Cross Site Request Forgery and identify forms.
      * 
      * Docs:
      * @link https://github.com/Sander-Brilman/php-website-template#security-features--cross-site-request-forgery
      * 
-     * @param string The name of the form. Must be unique. Use this name to verify the form in the check_form_id function.
+     * @param string The name of the form. Must be unique. Pass the same value to the check_form_id function.
      * 
-     * @return string The verify code of the form
+     * @return string The checkbox element with the name & verify code set.
      */
-    $code = bin2hex(random_bytes($verify_code_length / 2));
-    $_SESSION['forms'][$unique_name] = $code;
-    return $code;
+    $code = bin2hex(random_bytes(5));
+    $_SESSION['forms'][$form_name] = $code;
+    return '<input style="display: none;" type="checkbox" name="'.$form_name.'" value="'.$code.'" checked hidden>';
 }
 
 function check_form_id(string $form_name): bool
