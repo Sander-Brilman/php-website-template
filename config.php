@@ -64,7 +64,7 @@ $site_url .= $site_domain . $site_folder;
 
 $url_array = $_SERVER['REQUEST_URI'];
 $url_array = str_replace($site_folder, '', $url_array);
-$url_array = explode('/', $url_array);
+$url_array = explode('/', explode('?', $url_array)[0]);
 
 foreach ($url_array as &$value) {
 	$value = explode('?', $value)[0];
