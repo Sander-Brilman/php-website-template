@@ -76,8 +76,12 @@ function set_form_id(string $form_name): string
      * 
      * @return string The checkbox element with the name & verify code set.
      */
-    $code = bin2hex(random_bytes(5));
+    $code = isset($_SESSION['forms'][$form_name])
+        ? $_SESSION['forms'][$form_name]
+        : bin2hex(random_bytes(5));
+
     $_SESSION['forms'][$form_name] = $code;
+
     return '<input style="display: none;" type="checkbox" name="'.$form_name.'" value="'.$code.'" checked hidden>';
 }
 
