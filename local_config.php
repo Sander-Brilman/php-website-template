@@ -7,14 +7,14 @@
  * --------------------------------------------------------
  *          How to: Set $site_folder variable
  * --------------------------------------------------------
- * - @link https://github.com/Sander-Brilman/php-website-template#setup-guide--website-inside-a-folder-important
+ * - @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#setup-guide--website-inside-a-folder-important
  * 
  * 
  * 
  * --------------------------------------------------------
  *                  Full setup guide:
  * --------------------------------------------------------
- * - @link https://github.com/Sander-Brilman/php-website-template#setup-guide
+ * - @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#setup-guide
  */
 
 $site_folder = ''; // Don't forget the '/' at the start & end 

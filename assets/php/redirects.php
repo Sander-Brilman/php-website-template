@@ -8,14 +8,14 @@
  * --------------------------------------------------------
  *                  How to: Set redirects
  * --------------------------------------------------------
- * - @link https://github.com/Sander-Brilman/php-website-template#how-to-use--set-redirects
+ * - @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#how-to-use--set-redirects
  * 
  * 
  * 
  * --------------------------------------------------------
  *                  Full template guide:
  * --------------------------------------------------------
- * - @link https://github.com/Sander-Brilman/php-website-template#how-to-use
+ * - @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#how-to-use
  */
 
 // remove trailing '/' from url to improve SEO

@@ -10,7 +10,7 @@ function url(string $path_from_root = ''): string
      * Automatically strips the leading & trailing '/' to improve SEO
      * 
      * Read purpose here:
-     * @link https://github.com/Sander-Brilman/php-website-template#how-to-use--links-on-the-webpage-important
+     * @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#how-to-use--links-on-the-webpage-important
      * 
      * @param string
      * 
@@ -78,7 +78,7 @@ function set_form_id(string $form_name): string
      * Purpose is to prevent Cross Site Request Forgery and identify forms.
      * 
      * Docs:
-     * @link https://github.com/Sander-Brilman/php-website-template#security-features--cross-site-request-forgery
+     * @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#security-features--cross-site-request-forgery
      * 
      * @param string The name of the form. Must be unique. Pass the same value to the check_form_id function.
      * 
@@ -100,7 +100,7 @@ function check_form_id(string $form_name): bool
      * Returns true if it contains the same name & verify code
      * 
      * How to use:
-     * @link https://github.com/Sander-Brilman/php-website-template#security-features--cross-site-request-forgery
+     * @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#security-features--cross-site-request-forgery
      * 
      * @param string The name of the form you want to check for submission
      * 
@@ -119,7 +119,7 @@ function safe_echo(string $string): void
      * Easy to use function that prevents XSS.
      * 
      * Docs:
-     * @link https://github.com/Sander-Brilman/php-website-template#security-features--cross-site-request-forgery
+     * @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#security-features--cross-site-request-forgery
      * 
      * @param string The string to echo
      * @return void

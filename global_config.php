@@ -2,19 +2,19 @@
 /**
  * Global settings that are relevant everywhere despite where the website is run
  * 
- * 
+ * Version: v1.0.0
  * 
  * --------------------------------------------------------
  *              How to: Set Optional values
  * --------------------------------------------------------
- * - @link https://github.com/Sander-Brilman/php-website-template#setup-guide--optional-values
+ * - @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#setup-guide--optional-values
  * 
  * 
  * 
  * --------------------------------------------------------
- *                  Full setup guide:
+ *                          Docs:
  * --------------------------------------------------------
- * - @link https://github.com/Sander-Brilman/php-website-template#setup-guide
+ * - @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#setup-guide
  */
 
 $debug_ips = [

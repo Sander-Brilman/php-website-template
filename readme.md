@@ -1,5 +1,5 @@
-# Template
-#### To setup the template read *[Setup guide](https://github.com/Sander-Brilman/php-website-template#setup-guide)* (Its really easy)
+# Template v1.0.0
+#### To setup the template read *[Setup guide](https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#setup-guide)* (Its really easy)
 <br> 
 
 This is a php backend website template with a redirect engine allowing for custom url's and 404 pages. Sounds complicated? Don't worry! Its actually very easy to use :).
@@ -15,10 +15,10 @@ This is a php backend website template with a redirect engine allowing for custo
 
 ### Must-reads:
 #### I highly recommend you read these BEFORE you start working with the template
-- [Setup guide (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide)
-- [How to use > links on the webpage (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
-- [How to use > Security features. (Useful!)](https://github.com/Sander-Brilman/php-website-template#how-to-use--security-features-useful)
-- [Default files & settings (Important!)](https://github.com/Sander-Brilman/php-website-template#default-files--settings-important)
+- **Setup guide (Important!)**
+- **How to use > links on the webpage (Important!)**
+- **How to use > Security features. (Useful!)**
+- **Default files & settings (Important!)**
 <br>
 <br>
 

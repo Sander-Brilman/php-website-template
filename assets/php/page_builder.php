@@ -8,28 +8,28 @@
  * --------------------------------------------------------
  *                  How to: Define pages
  * --------------------------------------------------------
- * - @link https://github.com/Sander-Brilman/php-website-template#how-to-use--set-pages-in-page_builder
+ * - @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#how-to-use--set-pages-in-page_builder
  * 
  * 
  * 
  * --------------------------------------------------------
  *              How to: Define title & meta tags:
  * --------------------------------------------------------
- * - @link https://github.com/Sander-Brilman/php-website-template#how-to-use--title-and-metatags-in-pages
+ * - @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#how-to-use--title-and-metatags-in-pages
  * 
  * 
  * 
  * -------------------------------------------------------
  *                  How to: Canonical urls
  * -------------------------------------------------------
- * - @link https://github.com/Sander-Brilman/php-website-template#how-to-use--canonical-urls
+ * - @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#how-to-use--canonical-urls
  * 
  * 
  * 
  * --------------------------------------------------------
  *                  Full template guide:
  * --------------------------------------------------------
- * - @link https://github.com/Sander-Brilman/php-website-template#how-to-use
+ * - @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#how-to-use
  */
 
 function get_page_info(array $url_array = []): array
@@ -44,7 +44,7 @@ function get_page_info(array $url_array = []): array
      * -------------------------------------
      *         READ HERE HOW TO USE
      * -------------------------------------
-     * @link https://github.com/Sander-Brilman/php-website-template#how-to-use--title-and-metatags-in-pages
+     * @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#how-to-use--title-and-metatags-in-pages
      * 
      * 
 	 *
