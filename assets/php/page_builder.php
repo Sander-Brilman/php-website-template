@@ -60,7 +60,7 @@ function get_page_info(array $url_array = []): array
 	$meta_tags     = generate_meta_tags();
 	$title         = generate_title();
 
-	$no_index	   = false;
+	$indexing	   = true;
 
 	$page_info  = [
 		'files' => [
@@ -81,7 +81,7 @@ function get_page_info(array $url_array = []): array
 
 		default:
 			$php[] = '404';
-			$no_index = true;
+			$indexing = false;
 			$title = generate_title('Unknown page');
 			break;
 	}
@@ -107,8 +107,8 @@ function get_page_info(array $url_array = []): array
 		}
 	}
 
-	if ($no_index) {
-		$meta_tags = '<meta name="robots" content="noindex"/>';
+	if ($indexing) {
+		$meta_tags .= '<meta name="robots" content="noindex"/>';
 	}
 
 	return $page_info;
@@ -134,14 +134,15 @@ function generate_meta_tags(string $search_title = '', string $description = '',
 	global $theme_color;
     global $locate;
 
-	global $default_search_title;
-	global $default_website_description;
+	global $default_seo_title;
+	global $default_seo_description;
+	global $logo_path;
 
-	$search_title 	= $search_title == '' ? $default_search_title : $search_title;
-	$description 	= $description 	== '' ? $default_website_description : $description;
+	$search_title 	= $search_title == '' ? $default_seo_title : $search_title;
+	$description 	= $description 	== '' ? $default_seo_description : $description;
 
 	if ($path_from_root == '') {
-		$path_from_root = 'favicon.ico';
+		$path_from_root = $logo_path;
 	}
 
 	// title
@@ -166,6 +167,11 @@ function generate_meta_tags(string $search_title = '', string $description = '',
 	$meta_tags 	.= '<meta property="og:locale" content="'.$locate.'" />
 					<meta property="og:type"   content="website" />
 					<meta name="theme-color"   content="'.$theme_color.'" />';
+
+    // Apple IOS icon
+    $meta_tags  .= '<link rel="apple-touch-icon" href="'.url($path_from_root).'">
+                    <link rel="apple-touch-startup-image" href="'.url($path_from_root).'">';
+
 
 	return $meta_tags;
 }
@@ -208,17 +214,11 @@ function generate_canonical_url(string $page_url = '', bool $use_url_function = 
      */
     global $site_url;
     global $url_array;
-    global $site_folder;
 
     if ($page_url == '') {
         $stripped_page_url = substr($site_url, 0, strlen($site_url) - 1);
-        $original_page_url = $site_url.str_replace($site_folder, '', $_SERVER['REQUEST_URI']);
 
         foreach ($url_array as $item) $stripped_page_url .=  '/'.$item;
-
-        if ($original_page_url === $stripped_page_url) {
-            return '';
-        }
 
         $page_url = $stripped_page_url;
     }

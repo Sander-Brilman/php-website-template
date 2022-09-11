@@ -1,4 +1,8 @@
 <?php
+/**
+ * A file containing functions that can be used for debugging.
+ */
+
 function start_timer(): int
 {
     /**

@@ -20,6 +20,6 @@
 
 // remove trailing '/' from url to improve SEO
 if (end($url_array) == '' && str_replace($site_folder, '', $_SERVER['REQUEST_URI']) !== '') {
-    redirect('', true, true);
+    refresh();
 }
 ?>

@@ -2,10 +2,11 @@
 /**
  * A collection of all function declarations
  */
+
 function url(string $path_from_root = ''): string
 {
     /**
-     * Creates a absolute path to a file or url.
+     * Creates a absolute url based on the config settings.
      * Automatically strips the leading & trailing '/' to improve SEO
      * 
      * Read purpose here:
@@ -13,7 +14,7 @@ function url(string $path_from_root = ''): string
      * 
      * @param string
      * 
-     * @return string the absolute path
+     * @return string the absolute url
      */
     global $site_url;
     $path_array = explode('/', $path_from_root);
@@ -31,7 +32,7 @@ function url(string $path_from_root = ''): string
     return $site_url . $path_from_root;
 }
 
-function redirect(string $url_from_root, bool $use_url_function = true, bool $same_page = false): void
+function redirect(string $url_from_root, bool $use_url_function = true): void
 {
     /**
      * Redirect to a new page.
@@ -45,16 +46,23 @@ function redirect(string $url_from_root, bool $use_url_function = true, bool $sa
      * 
      * @return void
      */
-    global $site_folder;
-
-    $redirect = $same_page 
-        ? url(str_replace($site_folder, '', $_SERVER['REQUEST_URI']))
-        : ($use_url_function ? url($url_from_root) : $url_from_root);
-
+    $redirect = $use_url_function ? url($url_from_root) : $url_from_root;
 
     header('location: '.$redirect);
     exit;
     return;
+}
+
+function refresh(): void
+{
+    /**
+     * Refreshes the page clearing POST
+     * 
+     * @return void
+     */
+    global $site_folder;
+    
+    redirect(str_replace($site_folder, '', $_SERVER['REQUEST_URI']));
 }
 
 function set_form_id(string $form_name): string

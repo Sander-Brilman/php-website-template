@@ -2,12 +2,14 @@
 #### To setup the template read *[Setup guide](https://github.com/Sander-Brilman/php-website-template#setup-guide)* (Its really easy)
 <br> 
 
-This is a php backend website template that redirects all requests to `index.php` allowing for custom url's and 404 pages.
+This is a php backend website template with a redirect engine allowing for custom url's and 404 pages. Sounds complicated? Don't worry! Its actually very easy to use :).
 
+- Custom urls & 404 pages by the redirect engine
 - Easy way to create new pages and load custom css and js files on them.
 - Has SEO functionalities build into it
 - A clean (and safe) way of dealing with forms and redirects
 - Always include header and footer on a every page
+- Keeping files & pages organized 
 
 
 
@@ -16,19 +18,22 @@ This is a php backend website template that redirects all requests to `index.php
 - [Setup guide (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide)
 - [How to use > links on the webpage (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
 - [How to use > Security features. (Useful!)](https://github.com/Sander-Brilman/php-website-template#how-to-use--security-features-useful)
-- [Default files & settings (Important!)](https://github.com/Sander-Brilman/php-website-template#setup-guide--required-values-important)
-<br>
+- [Default files & settings (Important!)](https://github.com/Sander-Brilman/php-website-template#default-files--settings-important)
 <br>
 <br>
 
-**note:** This template is constantly changing & improving. Beware of changes in the code when downloading a new version.
+**Note:** This template is subject to change & improvements. I try to keep the documentation updated with the new changes.
 
-I try to keep the documentation updated with the new changes.
+Questions about the template? [Send me a email](https://sanderbrilman.nl/pages/contact.php)
 
 
 # Setup guide:
 
-To make the template work you need to define the variables inside the `config.php` file. 
+To make the template work you need to define the variables inside the configs files.<br>
+There are currently 2 config files, `local_config.php` & `global_config.php`.<br>
+**Why?** The `local_config.php` defines data that might be different depending on the device its running on. This makes it easy to prevent local settings from being pushed to other devices.
+<br>
+The `global_config.php` is for settings that need to be the same on every device that runs this website. This file can easily be transferred from device to device making sure the settings are synced without overwriting local settings 
 
 if your website is inside a folder (`www.example.com/my-website/` for example) read the **Setup guide > Website inside a folder (Important!)** below.
 
@@ -38,7 +43,7 @@ if your website is inside a folder (`www.example.com/my-website/` for example) r
 **Only necessary if your website is inside a folder like `www.example.com/my-website/`**
 <br>
 
-Inside the `config.php` file there is a variable called `$site_folder`.<br>
+Inside the `local_config.php` file there is a variable called `$site_folder`.<br>
 Set the variable to the folder(s) with a starting & trailing `/` at the start & end.<br>
 <br>
 So the example `www.example.com/my-website/` would be `$site_folder = '/my-website/';`
@@ -50,7 +55,7 @@ So the example `www.example.com/my-website/` would be `$site_folder = '/my-websi
 ## **Setup guide > Optional values**
 
 These variables are optional but are recommended you declare them as it improves SEO.
-All these variables can be found inside `config.php`.
+All these variables can be found inside `global_config.php`.
 
 
 - **$debug_ips:** All ip addresses in this array can view dumps and run ip checks in the code.
@@ -59,15 +64,16 @@ All these variables can be found inside `config.php`.
 
 - **$theme_color:** A css color notation of the website theme color
 
-- **$default_search_title:** The default title that will show up in search results if there is no title set for that page.
-- **$default_website_description:** The default website description that will show up in search results if there is no description set for that page.
+- **$default_seo_title:** The default title that will show up in search results if there is no title set for that page.
+- **$default_seo_description:** The default website description that will show up in search results if there is no description set for that page.
 
 - **$locate** set this value to a value of `language_TERRITORY` format. (*nl_NL* or *en_US* for example, [see the complete list](https://www.science.co.il/language/Locale-codes.php))
 
+- **$logo_path** The path to the logo of the website. This logo is used by default for the SEO metatags image
 
 **DataBase variables**
 
-If you want to use a database you can fill in these variables.
+If you want to use a database you can fill in these variables inside `local_config.php`.
 ```php
     $host       = '';
     $db_name    = '';
@@ -80,7 +86,7 @@ If you want to use a database you can fill in these variables.
 
 ## **Setup guide > Other optional settings**
 
-A list of optional settings you can change outside the `config.php` file.
+A list of optional settings you can change to improve SEO.
 
 - **favicon.ico:** Replace this with your own website logo
 - **robots.txt:** make sure that you configure your robots.txt when the website is finished. (Set to allow all by default)
@@ -254,7 +260,7 @@ And that is how easy it can be :)
 
 ## How to use > Canonical urls
 
-You can also define canonical urls inside `page_builder.php`. By default its set to the same page **without** url parameters.<br>
+You can also define canonical urls inside `page_builder.php`. By default its set to the same page **without** the url parameters.<br>
 
 So `example.com/my-page?section=2` will by default have a canonical url to `example.com/my-page`.
 
@@ -298,13 +304,7 @@ This function uses the php `header` function and executes a `exit;` after it.
 
 Since <ins>all</ins> the requests run through `/assets/php/process_form.php` you can put all your form processing inside this file.<br>
 
-To clear the post after you are done processing use the `redirect` function.<br>
-
-If you want the user to remain on the same page set the last parameter of the `redirect` function to `true`. This will redirect the user to the same page clearing the post request.
-
-```php
-redirect('', true, false);
-```
+To clear the post after you are done processing use the `redirect` or `refresh` function.<br>
 
 **Note:** I recommend using the `create_form_id` & `check_form_id` functions to identify your forms and prevent Cross Site Request Forgery. (Read below on how to use)
 
@@ -317,7 +317,7 @@ All these features are optional to use.
 The `safe_echo` function that works like `echo` but runs everything through the `htmlspecialchars` php function making it safe (and easy) to safely print user input.
 
 ### Security features > Cross Site Request Forgery.
-To deal with Cross Site Request Forgery 2 functions are defined in `assets/php/functions.php`:<br>`set_form_id` & `check_form_id`
+To deal with the Cross Site Request Forgery there are 2 functions are defined in `assets/php/functions.php`:<br>`set_form_id` & `check_form_id`
 
 To secure your form processing pick a name for your form ('delete-form' for example)<br>
 
@@ -345,20 +345,18 @@ if (check_form_id('delete-form')) {
 }
 ```
 
-**Note:** the `set_form_id` function will return a hidden checkbox with the picked name set as the `name` attribute. So make sure there are no other inputs with the same `name` attribute.
+**Note:** the `set_form_id` function will return a hidden checkbox with the picked name set as the `name` attribute. and the code as `value`, So make sure there are no other inputs with the same `name` attribute.
 
 
 # **Default files & settings (Important!)**
 Files & settings that are defined by default. Keeping/Removing them is optional and will not break the template
 
-- Jquery and bootstraps are included with CDN. Inside `index.php` `<head>` element.
-- A Font awesome icon stylesheet is included and can be found in `assets/css/icons.css`. The link element is inside the `index.php` file inside `<head>` element
 
 - The file `assets/php/debug_functions.php` contains useful debugging functions:
-    - **dump:** A custom `var_dump` with ip check.
+    - **dump:** A custom readable `var_dump` with ip check.
     - **check_debug_ip:** Checks if current user is listed as a debug ip.
     - **start_timer:** Returns a value that can be used for timing the processing time
     - **end_timer:** Takes the `start_timer` value and returns ago it was (in milliseconds)
 
-- The `pages/blocks/header.php` and `pages/blocks/footer` are included inside `index.php`
+- The `pages/blocks/header.php` and `pages/blocks/footer` blocks are by default included inside `index.php`
 - All url's that do not have pages assigned to them in `assets/php/page_builder.php` will load the `pages/404.php` file.
