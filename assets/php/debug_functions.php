@@ -57,17 +57,18 @@ function dump($data, bool $ip_check = true): void
         return;
     }
 
-    $caller = debug_backtrace();
-    $caller = array_pop($caller);
+    $callers = debug_backtrace();
     $style  = 'z-index: 9999; border: red solid 2px; background: white;';
     ?>
     <div style="<?= $style ?>">
         <p>
-            Called from: 
+            Called from: <br>
             <?php 
-            echo '<b>'.$caller["file"].'</b>'; 
-            echo ($caller["function"] != 'dump' ? 'from '.$caller["function"] : ''). ' ';
-            echo 'on line <b>'.$caller["line"].'</b>';
+            foreach ($callers as $caller) {
+                echo '<b>'.$caller["file"].' </b>'; 
+                echo ($caller["function"] != 'dump' ? 'from '.$caller["function"] : ''). ' ';
+                echo 'on line <b>'.$caller["line"].'</b><br>';
+            }
             ?>
         </p>
         <pre>
