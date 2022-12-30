@@ -7,21 +7,20 @@ function url(string $path_from_root = ''): string
 {
     /**
      * Creates a absolute url based on the config settings.
-     * Automatically strips the leading & trailing '/' to improve SEO
-     * 
-     * Read purpose here:
-     * @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#how-to-use--links-on-the-webpage-important
-     * 
-     * @param string
-     * 
-     * @return string the absolute url
-     */
+    * Automatically strips the leading & trailing '/' to improve SEO
+    * 
+    * Read purpose here:
+    * @link https://github.com/Sander-Brilman/php-website-template/releases/tag/v1.0.0#how-to-use--links-on-the-webpage-important
+    * 
+    * @param string
+    * 
+    * @return string the absolute url
+    */
     global $site_url;
-    $path_array = explode('/', $path_from_root);
+    $path_array = explode('/', explode('?', $path_from_root)[0]);
 
     // remove leading '/'
     if (substr($path_from_root, 0, 1) == '/') {$path_from_root = substr($path_from_root, 1);}  
-
 
     // remove trailing '/'
     if (end($path_array) === '') {

@@ -19,7 +19,7 @@
  */
 
 // remove trailing '/' from url to improve SEO
-if (end($url_array) == '' && str_replace($site_folder, '', $_SERVER['REQUEST_URI']) !== '') {
+if (sizeof($url_array) > 1 && end($url_array) == '' && str_replace($site_folder, '', $_SERVER['REQUEST_URI']) !== '') {
     refresh();
 }
 ?>
