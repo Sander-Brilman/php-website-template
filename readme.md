@@ -22,8 +22,6 @@ This is a php backend website template with a redirect engine allowing for custo
 <br>
 <br>
 
-**Note:** This template is subject to change & improvements. I try to keep the documentation updated with the new changes.
-
 Questions about the template? [Send me a email](https://sanderbrilman.nl/pages/contact.php)
 
 
